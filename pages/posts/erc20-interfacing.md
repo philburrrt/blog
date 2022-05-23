@@ -1,12 +1,12 @@
 ---
-title: Getting a contract interface with a specific ERC20 token
+title: Getting a contract to interface with a specific ERC20 token
 date: 2022/5/23
 description: Breaking down ERC20 deposits in staking contracts & general interfacing. 
 tag: solidity
 author: Philbert Burrow
 ---
 
-# Getting a contract interface with a specific ERC20 token
+# Getting a contract to interface with a specific ERC20 token
 
 Creating a smart contract which interacts with a specific ERC20 token, one that might not exist yet, felt particularly unintuitive. 
 
