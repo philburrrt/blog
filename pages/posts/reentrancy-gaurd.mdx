@@ -1,0 +1,86 @@
+---
+title: Adding ReentrancyGaurd to a contract
+date: 2022/5/23
+description: Don't overthink it 
+tag: solidity
+author: Philbert Burrow
+---
+
+# Adding ReentrancyGaurd to a contract
+
+You really just add nonReentrant to the deposit & withdrawal functions.
+
+Start:
+
+```solidity=
+pragma solidity 0.8.12;
+
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+
+// need emergencyWithdrawal()
+
+contract Locker is Ownable {
+
+    address public rootToken;
+
+    mapping (address => uint256) public lockedTotal;
+
+    constructor () {}
+
+    function setRootToken(address _rootToken) public onlyOwner {
+        rootToken = _rootToken;
+    }
+
+    function deposit(uint256 amount) public {
+        require(amount <= IERC20(rootToken).balanceOf(msg.sender));
+        IERC20(rootToken).transferFrom(msg.sender, address(this), amount);
+        lockedTotal[msg.sender] = amount;
+    }
+
+    function withdraw(uint256 amount) public {
+        require(amount <= lockedTotal[msg.sender]);
+        IERC20(rootToken).transferFrom(address(this), msg.sender, amount);
+        lockedTotal[msg.sender] -= amount;
+    }
+
+}
+```
+
+Finish:
+
+```solidity=
+pragma solidity 0.8.12;
+
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+
+// need emergencyWithdrawal()
+
+contract Locker is Ownable, ReentrancyGuard {
+
+    address public rootToken;
+
+    mapping (address => uint256) public lockedTotal;
+
+    constructor () {}
+
+    function setRootToken(address _rootToken) public onlyOwner {
+        rootToken = _rootToken;
+    }
+
+    function deposit(uint256 amount) public nonReentrant {
+        require(amount <= IERC20(rootToken).balanceOf(msg.sender));
+        IERC20(rootToken).transferFrom(msg.sender, address(this), amount);
+        lockedTotal[msg.sender] = amount;
+    }
+
+    function withdraw(uint256 amount) public nonReentrant {
+        require(amount <= lockedTotal[msg.sender]);
+        IERC20(rootToken).transferFrom(address(this), msg.sender, amount);
+        lockedTotal[msg.sender] -= amount;
+    }
+
+}
+```
