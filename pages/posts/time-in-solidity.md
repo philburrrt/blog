@@ -1,3 +1,11 @@
+---
+title: Dealing with time in solidity
+date: 2022/5/25
+description: Solidity uses Unix time, which might be less complicated than you think 
+tag: solidity
+author: Philbert Burrow
+---
+
 # Dealing with time in solidity
 
 Before anything:
