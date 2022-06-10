@@ -8,7 +8,7 @@ author: Philbert Burrow
 
 # Testing with Foundry
 
-I've been working with solidity for a month or two now. Started with hardhat, just because it had the most users and recently migrated all of my current Projects to foundry. It seems like an obvious move for many reasons.
+I've been working with solidity for a month or two now. Started with hardhat, just because it had the most users and recently migrated all of my current projects to foundry. It seems like an obvious move for many reasons.
 
 The docs have been pretty solid, but I couldn't find many details about testing. And it can be a bit more intimidating than Hardhat as most are slightly familiar with javascript and ethers.
 
