@@ -12,7 +12,7 @@ I've been working with solidity for a month or two now. Started with hardhat, ju
 
 The docs have been pretty solid, but I couldn't find many details about testing. And it can be a bit more intimidating than Hardhat as most are slightly familiar with javascript and ethers.
 
-Inevitably, I found that [this video](https://www.youtube.com/watch?v=pgh74-XulXg&ab_channel=Chainlink) taught me what I needed to know to get started within the first 25 minutes. but Maybe I can break that down a bit more quickly via a code block.
+Inevitably, I found that [this video](https://www.youtube.com/watch?v=pgh74-XulXg&ab_channel=Chainlink) taught me what I needed to know to get started within the first 25 minutes. But, maybe I can break that down a bit more quickly via a code block.
 
 ```
 pragma solidity ^0.8.13;
