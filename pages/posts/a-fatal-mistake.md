@@ -1,3 +1,11 @@
+---
+title: My first fatal mistake in prod
+date: 2022/06/12
+description: Write solidity slowly and carefully
+tag: solidity
+author: Philbert Burrow
+---
+
 # My first fatal mistake in prod
 
 During my experience developing token & related contracts for Hyperfy, I realized that a very simple, custom ERC1155 implementation could help a group of friends distribute GLBs that otherwise would go unused. At the time, I had way too many things on my plate, but was excited about this idea and thought I could quickly execute on it, then dip out.
